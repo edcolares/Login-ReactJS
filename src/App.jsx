@@ -1,38 +1,24 @@
-import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Container } from 'reactstrap'
 import { AuthProvider } from './context/AuthProvider';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ProtectLayout } from './components/Protectedlayout';
-import LoginScreen from './components/Login';
-
-function Profile() {
-  return (
-    <h2>Olá, este é o componente Profile!</h2>
-  );
-}
 
 function App() {
+
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path='/profile'
-            element={
-              <ProtectLayout>
-                <Profile />
-              </ProtectLayout>
-            }
-          />
-          <Route
-            path='/login'
-            element={
-              <LoginScreen />
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
-  );
+    <div className='App'>
+
+
+      <AuthProvider>
+        
+        <Container className="my-3 px-4 py-4 bg-white rounded shadow-sm">
+          <Outlet></Outlet>
+        </Container>
+
+      </AuthProvider>
+
+    </div>
+
+  )
 }
 
 export default App;

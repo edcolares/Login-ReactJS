@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { getUserLocalStorage } from '../context/AuthProvider/util';
 
-export const Api = axios.create({
+
+export const fetch = axios.create({
     baseURL: "http://localhost:3001"
 });
 
-Api.interceptors.request.use(
+fetch.interceptors.request.use(
     (config) => {
         const user = getUserLocalStorage();
 

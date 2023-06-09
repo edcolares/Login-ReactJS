@@ -1,4 +1,4 @@
-import { Api } from "../../services/api";
+import { fetch } from "../../services/config";
 
 export function setUserLocalStorage(user) {
     localStorage.setItem('u', JSON.stringify(user));
@@ -18,7 +18,7 @@ export function getUserLocalStorage() {
 
 export async function LoginRequest(email, password) {
     try {
-        const request = await Api.post('login', { email, password });
+        const request = await fetch.post('login', { email, password });
 
         return request.data;
     } catch (error) {
